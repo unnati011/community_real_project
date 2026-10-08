@@ -1,0 +1,5 @@
+﻿CommunityConnect_Real_Project/node_modules/
+CommunityConnect_Real_Project/database/*.db
+CommunityConnect_Real_Project/database/*.db-shm
+CommunityConnect_Real_Project/database/*.db-wal
+.env

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CommunityConnect | Community Problem Solving</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/">Community<span>Connect</span></a>
+  <nav>
+    <a href="#problems">Problems</a>
+    <a href="#resources">Resources</a>
+    <a href="#how">How It Works</a>
+    <button id="navAuth" class="btn primary">Sign In</button>
+  </nav>
+</header>
+
+<div id="toast" class="toast"></div>
+
+<main id="publicPage">
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">COMMUNITY DIGITAL PLATFORM</div>
+    <h1>Turn community problems into measurable solutions.</h1>
+    <p>Report local issues, share useful resources, collaborate with residents and track progress through one transparent platform.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="openModal('register')">Join the Community</button>
+      <a class="btn ghost" href="#problems">Explore Problems</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <h3>Platform overview</h3>
+    <div class="stats">
+      <div><strong id="heroProblems">0</strong><span>Problems</span></div>
+      <div><strong id="heroResources">0</strong><span>Resources</span></div>
+      <div><strong id="heroResolved">0</strong><span>Resolved</span></div>
+      <div><strong>24/7</strong><span>Access</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="problems">
+  <div class="section-head">
+    <div><h2>Community Problems</h2><p>Real reports submitted by community members.</p></div>
+    <button class="btn outline" onclick="requireUser('report')">Report a Problem</button>
+  </div>
+  <div id="problemCards" class="grid three"></div>
+</section>
+
+<section class="section alt" id="resources">
+  <div class="section-head">
+    <div><h2>Resource Hub</h2><p>Useful knowledge, services and resources shared by the community.</p></div>
+    <button class="btn outline" onclick="requireUser('resource')">Share a Resource</button>
+  </div>
+  <div id="resourceCards" class="grid three"></div>
+</section>
+
+<section class="section" id="how">
+  <div class="section-head"><div><h2>How It Works</h2><p>A simple workflow for transparent community action.</p></div></div>
+  <div class="grid four">
+    <div class="feature"><b>01</b><h3>Identify</h3><p>Report an issue with clear details and location information.</p></div>
+    <div class="feature"><b>02</b><h3>Connect</h3><p>Bring residents, volunteers and organizations together.</p></div>
+    <div class="feature"><b>03</b><h3>Act</h3><p>Share resources and coordinate practical actions.</p></div>
+    <div class="feature"><b>04</b><h3>Resolve</h3><p>Track the outcome and keep the community informed.</p></div>
+  </div>
+</section>
+</main>
+
+<main id="dashboardPage" class="hidden">
+<section class="dashboard">
+  <div class="dash-top">
+    <div><div class="eyebrow">ACCOUNT</div><h1 id="dashTitle">Dashboard</h1><p id="dashUser"></p></div>
+    <button class="btn outline" onclick="logout()">Log Out</button>
+  </div>
+
+  <div id="userDash" class="hidden">
+    <div class="notice">You are signed in. Your reports and shared resources are stored in the CommunityConnect database.</div>
+    <div class="grid three">
+      <div class="feature"><b>REPORT</b><h3>Create a Problem Report</h3><p>Tell the community about an issue that needs attention.</p><button class="btn primary" onclick="openModal('report')">Create Report</button></div>
+      <div class="feature"><b>RESOURCE</b><h3>Share a Resource</h3><p>Share a service, guide, skill or useful link.</p><button class="btn primary" onclick="openModal('resource')">Share Resource</button></div>
+      <div class="feature"><b>ACCOUNT</b><h3>Your Account</h3><p id="accountInfo"></p></div>
+    </div>
+  </div>
+
+  <div id="adminDash" class="hidden">
+    <div class="admin-stats" id="adminStats"></div>
+    <div class="admin-tabs">
+      <button class="tab active" onclick="adminTab('users',this)">Users</button>
+      <button class="tab" onclick="adminTab('logins',this)">Login Activity</button>
+      <button class="tab" onclick="adminTab('problems',this)">Problem Management</button>
+    </div>
+    <div id="adminTable"></div>
+  </div>
+</section>
+</main>
+
+<footer><strong>CommunityConnect</strong><span>Community problem solving and resource sharing platform</span></footer>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle">Sign In</h2>
+    <p id="modalSub" class="muted"></p>
+    <form id="modalForm"></form>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
