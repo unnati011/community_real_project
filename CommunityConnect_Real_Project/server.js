@@ -8,7 +8,12 @@ const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = new Database(path.join(__dirname, "database", "community.db"));
+const fs = require("fs");
+
+const databaseDir = path.join(__dirname, "database");
+fs.mkdirSync(databaseDir, { recursive: true });
+
+const db = new Database(path.join(databaseDir, "community.db"));
 
 db.pragma("journal_mode = WAL");
 db.pragma("foreign_keys = ON");
